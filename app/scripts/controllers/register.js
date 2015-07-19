@@ -7,8 +7,7 @@ angular.module('customerApp')
 						
 					$scope.isEmpty = false;	
 					$scope.isEquals = true;		
-					$scope.isExists = false;
-
+				
 					$scope.myData = new Firebase("https://customersapp.firebaseio.com/Customers");
 					var size = 0 ;
 					var strArr = {};				
@@ -17,28 +16,23 @@ angular.module('customerApp')
 						if($scope.Name == "" || $scope.Password == "" ||$scope.verifyPassword == ""  ){
 							alert('Insert all *** to contionue!');		
 							$scope.isEmpty = true;	
-							return ;	
 						}
-						$scope.isEmpty = false;			
-						if($scope.Password !=$scope.verifyPassword){
-							alert('Password and verifyPassword are not equals, try again please!');
-							$scope.isEquals = false;
-							return ;	
-						}
-						$scope.isEquals = true;							
-						if(checkIfUserExists()){
-							alert('Username already exists , Try a different username.');
-							$scope.isExists = true;
-							return ;
-						}
-						$scope.isExists = false;
-						$scope.myData.push({Name: $scope.Name, Password: $scope.Password});
-						$scope.Name = "";
-						$scope.Password = "";	
-						$scope.verifyPassword = "";			
-						alert('You have successfully signed.' + $scope.Name);
-						window.location.href="index.html"
-						
+						else{
+							$scope.isEmpty = false;			
+							if($scope.Password !=$scope.verifyPassword){
+								alert('Password and verifyPassword are not equals, try again please!');
+								$scope.isEquals = false;
+							}
+							else{
+								$scope.isEquals = true;							
+								if(checkIfUserExists()){
+									alert('Username already exists , Try a different username.');	
+								}
+								else{
+									$scope.myData.push({Name: $scope.Name, Password: $scope.Password});								
+									alert('You have successfully signed.' + $scope.Name);
+									window.location.href="index.html"
+						}}}
 					};
 					
 					function checkAllChild(parent){

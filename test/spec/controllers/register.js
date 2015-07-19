@@ -22,7 +22,30 @@ describe('Controller: RegisterCtrl', function () {
      scope.verifyPassword = "";   
      scope.saveUser();
      expect(scope.isEmpty).toBe(true);
+     scope.Name = "_";
+     scope.Password = "";
+     scope.verifyPassword = "";   
+     scope.saveUser();
+     expect(scope.isEmpty).toBe(true);
+      scope.Name = "_";
+     scope.Password = "_";
+     scope.verifyPassword = "_";   
+     scope.saveUser();
+     expect(scope.isEmpty).toBe(false);
+     
   });
 
+  it('should return false when password/verifyPassword are unequals: ', function () {
+     scope.Name = "_";
+     scope.Password = "_";
+     scope.verifyPassword = "__";   
+     scope.saveUser();
+     expect(scope.isEquals).toBe(false);
+     scope.Name = "_";
+     scope.Password = "_";
+     scope.verifyPassword = "_";   
+     scope.saveUser();
+     expect(scope.isEquals).toBe(true);
+  });
   
 });
