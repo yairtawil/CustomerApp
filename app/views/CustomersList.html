@@ -1,0 +1,15 @@
+<h1> Customers List: </h1>	
+	<br/><br/>
+
+	<div>
+			<table class="table table-bordered"> 
+				<thead>
+					<th class="textCenter">Customer Name:</th>	
+					<th class="textCenter">Customer Password:</th>		
+				</thead>
+				<tbody  ng-repeat="customer in Customers">
+					<td>{{customer.Name}}</td>	
+					<td>{{customer.Password}}</td>					
+				</tbody>
+			</table>
+		</div>
